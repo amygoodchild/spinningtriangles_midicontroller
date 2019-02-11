@@ -1,4 +1,5 @@
 /*
+/
 / Triangle shape visuals
 / Control variables using a nanoKontrol2 midicontroller. 
 / You could use any midicontroller, just update the numbers.
@@ -43,17 +44,15 @@ void setup(){
   
   numOfTriangles = cols*rows;
   
-  
   MidiBus.list(); // List all available Midi devices on STDOUT. This will show each device's index and name.
   myBus = new MidiBus(this, 0, 0); // Create a new MidiBus object
-
 
   // Create an array of all the triangles
   triangles = new Triangle[numOfTriangles]; 
   for (int i=0; i<numOfTriangles; i++){
      int row = i/cols;
      int col = i%cols;        
-     triangles[i] = new Triangle(col, row,i);     
+     triangles[i] = new Triangle(col, row, i);     
   }
     
 }
@@ -76,7 +75,7 @@ void draw(){
     }
   }
   
-  // print the framerate for troubleshooting
+  // Print the framerate - for troubleshooting
   // fill(100,0,100);
   // textSize(30);
   // text(frameRate, 10, 50);
@@ -85,7 +84,7 @@ void draw(){
 
 void keyPressed(){
   
-  // If you don't have a midicontroller, you can control variables using a keyboard
+  // If you don't have a midicontroller, you can control variables in steps using a keyboard
   if (keyCode == UP){
     for (int i=0; i<numOfTriangles; i++){
       triangles[i].newSize+=10;
@@ -109,9 +108,7 @@ void keyPressed(){
 }
 
 
-void midiMessage(MidiMessage message) { // You can also use midiMessage(MidiMessage message, long timestamp, String bus_name)
-  // Receive a MidiMessage
-
+void midiMessage(MidiMessage message) { 
    // Print out some info on the midi message. 
    //println();
    //println("MidiMessage Data:");
